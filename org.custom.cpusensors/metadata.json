@@ -1,0 +1,14 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [{"Name": "Custom"}],
+        "Category": "System Information",
+        "Description": "CPU Usage and Temperature",
+        "Icon": "cpu",
+        "Id": "org.custom.cpusensors",
+        "Name": "CPU Sensors",
+        "Version": "1.0"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml"
+}

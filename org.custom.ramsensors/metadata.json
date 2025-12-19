@@ -1,0 +1,14 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [{"Name": "Custom"}],
+        "Category": "System Information",
+        "Description": "RAM Usage Percentage",
+        "Icon": "media-flash",
+        "Id": "org.custom.ramsensors",
+        "Name": "RAM Sensors",
+        "Version": "1.0"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml"
+}
