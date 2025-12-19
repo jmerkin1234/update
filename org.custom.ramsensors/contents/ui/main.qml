@@ -1,8 +1,8 @@
-import QtQuick
-import QtQuick.Layouts
-import org.kde.plasmoid
+import QtQuick 2.15
+import QtQuick.Layouts 1.1
 import org.kde.plasma.core as PlasmaCore
-import org.kde.ksysguard.sensors as Sensors
+import org.kde.plasma.plasmoid 2.0
+import org.kde.ksysguard.sensors 1.0 as Sensors
 
 PlasmoidItem {
     id: root
