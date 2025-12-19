@@ -1,41 +1,41 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.ksysguard.sensors 1.0 as Sensors
+import QtQuick
+import QtQuick.Layouts
+import org.kde.plasmoid
+import org.kde.plasma.core as PlasmaCore
+import org.kde.ksysguard.sensors as Sensors
 
-Item {
-    Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
+PlasmoidItem {
+    id: root
 
-    property bool showIcon: plasmoid.configuration.showIcon || false
-    property bool showLabel: plasmoid.configuration.showLabel !== false
-    property string textColor: plasmoid.configuration.textColor || "#ffff00"
-    property int fontSize: plasmoid.configuration.fontSize || 30
-    property int iconSize: plasmoid.configuration.iconSize || 30
+    property bool showIcon: Plasmoid.configuration.showIcon || false
+    property bool showLabel: Plasmoid.configuration.showLabel !== false
+    property string textColor: Plasmoid.configuration.textColor || "#ffff00"
+    property int fontSize: Plasmoid.configuration.fontSize || 30
+    property int iconSize: Plasmoid.configuration.iconSize || 30
 
-    Plasmoid.compactRepresentation: RowLayout {
+    compactRepresentation: RowLayout {
         Layout.margins: 5
         spacing: 5
 
         Image {
             source: Qt.resolvedUrl("../icons/ram.png")
-            width: iconSize
-            height: iconSize
-            Layout.preferredWidth: iconSize
-            Layout.preferredHeight: iconSize
-            visible: showIcon
+            width: root.iconSize
+            height: root.iconSize
+            Layout.preferredWidth: root.iconSize
+            Layout.preferredHeight: root.iconSize
+            visible: root.showIcon
             fillMode: Image.PreserveAspectFit
         }
 
         Text {
             text: {
                 let parts = []
-                if (showLabel) parts.push("RAM")
+                if (root.showLabel) parts.push("RAM")
                 parts.push(ramUsed.formattedValue)
                 return parts.join(" ")
             }
-            font.pointSize: fontSize
-            color: textColor
+            font.pointSize: root.fontSize
+            color: root.textColor
             Layout.alignment: Qt.AlignVCenter
             Layout.fillWidth: true
             Layout.minimumWidth: implicitWidth
