@@ -1,44 +1,44 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import org.kde.plasma.plasmoid 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.ksysguard.sensors 1.0 as Sensors
+import QtQuick
+import QtQuick.Layouts
+import org.kde.plasmoid
+import org.kde.plasma.core as PlasmaCore
+import org.kde.ksysguard.sensors as Sensors
 
-Item {
-    Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
+PlasmoidItem {
+    id: root
 
-    property bool showUsage: plasmoid.configuration.showUsage
-    property bool showTemp: plasmoid.configuration.showTemp
-    property bool showIcon: plasmoid.configuration.showIcon || false
-    property bool showLabel: plasmoid.configuration.showLabel !== false
-    property string textColor: plasmoid.configuration.textColor || "#00ff00"
-    property int fontSize: plasmoid.configuration.fontSize || 30
-    property int iconSize: plasmoid.configuration.iconSize || 30
+    property bool showUsage: Plasmoid.configuration.showUsage
+    property bool showTemp: Plasmoid.configuration.showTemp
+    property bool showIcon: Plasmoid.configuration.showIcon || false
+    property bool showLabel: Plasmoid.configuration.showLabel !== false
+    property string textColor: Plasmoid.configuration.textColor || "#00ff00"
+    property int fontSize: Plasmoid.configuration.fontSize || 30
+    property int iconSize: Plasmoid.configuration.iconSize || 30
 
-    Plasmoid.compactRepresentation: RowLayout {
+    compactRepresentation: RowLayout {
         Layout.margins: 5
         spacing: 5
 
         Image {
             source: Qt.resolvedUrl("../icons/cpu.png")
-            width: iconSize
-            height: iconSize
-            Layout.preferredWidth: iconSize
-            Layout.preferredHeight: iconSize
-            visible: showIcon
+            width: root.iconSize
+            height: root.iconSize
+            Layout.preferredWidth: root.iconSize
+            Layout.preferredHeight: root.iconSize
+            visible: root.showIcon
             fillMode: Image.PreserveAspectFit
         }
 
         Text {
             text: {
                 let parts = []
-                if (showLabel) parts.push("CPU")
-                if (showUsage) parts.push(cpuUsage.formattedValue)
-                if (showTemp) parts.push(cpuTemp.formattedValue)
+                if (root.showLabel) parts.push("CPU")
+                if (root.showUsage) parts.push(cpuUsage.formattedValue)
+                if (root.showTemp) parts.push(cpuTemp.formattedValue)
                 return parts.join(" ")
             }
-            font.pointSize: fontSize
-            color: textColor
+            font.pointSize: root.fontSize
+            color: root.textColor
             Layout.alignment: Qt.AlignVCenter
             Layout.fillWidth: true
             Layout.minimumWidth: implicitWidth
